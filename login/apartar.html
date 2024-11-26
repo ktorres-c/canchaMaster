@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva de Cancha - CanchaMaster</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+  
+    <link rel="stylesheet" href="../assets/css/main.css">  <style>
+    body {
+      background: linear-gradient(135deg, #1a1b5e, #232475);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1f215a;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      padding-bottom: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #28a745;
+      border-bottom: 2px solid #28a745;
+    }
+
+    .court-selection {
+      margin-top: 100px;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .court-option {
+      background-color: #1f215a;
+      color: white;
+      width: 250px;
+      text-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+
+    .court-option:hover {
+      background-color: #28a745;
+    }
+
+    .court-option img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .court-option h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .court-option p {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .calendar-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: #232475;
+      border-radius: 10px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    .calendar-table th,
+    .calendar-table td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #444;
+    }
+
+    .calendar-table th {
+      background-color: #1f215a;
+    }
+
+    .calendar-table td {
+      background-color: #3b3f8c;
+      color: white;
+    }
+
+    .time-slot {
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .time-slot:hover {
+      background-color: #28a745;
+    }
+
+    .time-slot.morning {
+      background-color: #1a8e44;
+    }
+
+    .time-slot.afternoon {
+      background-color: #ff9800;
+    }
+
+    .time-slot.evening {
+      background-color: #9c27b0;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    .btn-reserve {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-reserve:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    
+          <a href="../index.html" class="logo d-flex align-items-center">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <h1 class="sitename">CanchaMaster</h1>
+          </a>
+    
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="#hero" class="active">Home</a></li>
+              
+              <li class="dropdown">
+                <a href="#"><span>Acceso</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Iniciar Sesión</a></li>
+                  <li><a href="registro.html">Registrarse</a></li>
+                  <li><a href="cancha.html">Registrar Cancha</a></li>
+                  <li><a href="apartar.html">Apartar Cancha</a></li>
+                </ul>
+              </li>
+              <li><a href="../paginas/Acercade.html">About</a></li>
+              <li><a href="../index.html#gallery">Gallery</a></li>
+             <li><a href="../index.thml#team">Team</a></li>
+             <li><a href="../index.html#pricing">Pricing</a></li>
+          
+             <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+          
+    
+        </div>
+      </header>
+ 
+<div class="container-fluid" style="margin-top: 80px;">
+  <div class="court-selection">
+    <!-- Sección para seleccionar la cancha con imágenes -->
+    <div class="court-option" onclick="showCalendar('cancha1')">
+      <img src="../assets/img/gallery/galeria1.jpg" alt="Cancha 1">
+      <h3>Cancha 1</h3>
+      <p>Cancha de césped sintético, ideal para partidos rápidos.</p>
+    </div>
+    <div class="court-option" onclick="showCalendar('cancha2')">
+      <img src="../assets/img/gallery/galeria2.jpg" alt="Cancha 2">
+      <h3>Cancha 2</h3>
+      <p>Espacio con buenas condiciones para entrenamientos.</p>
+    </div>
+    <div class="court-option" onclick="showCalendar('cancha3')">
+      <img src="../assets/img/gallery/galeria3.jpg" alt="Cancha 3">
+      <h3>Cancha 3</h3>
+      <p>Cancha cubierta, perfecta para cualquier clima.</p>
+    </div>
+    <div class="court-option" onclick="showCalendar('cancha4')">
+      <img src="../assets/img/gallery/galeria4.jpg" alt="Cancha 4">
+      <h3>Cancha 4</h3>
+      <p>Cancha de tenis de gran tamaño, ideal para partidos dobles.</p>
+    </div>
+    <div class="court-option" onclick="showCalendar('cancha5')">
+      <img src="../assets/img/gallery/galeria5.jpg" alt="Cancha 5">
+      <h3>Cancha 5</h3>
+      <p>Cancha con césped natural, para una experiencia realista.</p>
+    </div>
+    <div class="court-option" onclick="showCalendar('cancha6')">
+      <img src="../assets/img/gallery/galeria6.jpg" alt="Cancha 6">
+      <h3>Cancha 6</h3>
+      <p>Excelente opción para partidos recreativos.</p>
+    </div>
+    <div class="court-option" onclick="showCalendar('cancha7')">
+      <img src="../assets/img/gallery/galeria7.jpg" alt="Cancha 7">
+      <h3>Cancha 7</h3>
+      <p>Cancha amplia para deportes en grupo.</p>
+    </div>
+    <div class="court-option" onclick="showCalendar('cancha8')">
+      <img src="../assets/img/gallery/galeria8.jpg" alt="Cancha 8">
+      <h3>Cancha 8</h3>
+      <p>Cancha moderna con iluminación nocturna.</p>
+    </div>
+  </div>
+
+  <div class="calendar-container" id="calendar-container" style="display: none; width: 100%;">
+    <h2 id="court-title">Selecciona el horario para la cancha seleccionada</h2>
+    <table class="calendar-table">
+      <thead>
+        <tr>
+          <th>Día</th>
+          <th>6:00 am - 12:00 pm</th>
+          <th>2:00 pm - 6:00 pm</th>
+          <th>6:00 pm - 12:00 am</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lunes</td>
+          <td><span class="time-slot morning">12,000 COP</span></td>
+          <td><span class="time-slot afternoon">22,000 COP</span></td>
+          <td><span class="time-slot evening">32,000 COP</span></td>
+        </tr>
+        <tr>
+          <td>Martes</td>
+          <td><span class="time-slot morning">12,000 COP</span></td>
+          <td><span class="time-slot afternoon">22,000 COP</span></td>
+          <td><span class="time-slot evening">32,000 COP</span></td>
+        </tr>
+        <tr>
+          <td>Miércoles</td>
+          <td><span class="time-slot morning">12,000 COP</span></td>
+          <td><span class="time-slot afternoon">22,000 COP</span></td>
+          <td><span class="time-slot evening">32,000 COP</span></td>
+        </tr>
+        <tr>
+          <td>Jueves</td>
+          <td><span class="time-slot morning">12,000 COP</span></td>
+          <td><span class="time-slot afternoon">22,000 COP</span></td>
+          <td><span class="time-slot evening">32,000 COP</span></td>
+        </tr>
+        <tr>
+          <td>Viernes</td>
+          <td><span class="time-slot morning">12,000 COP</span></td>
+          <td><span class="time-slot afternoon">22,000 COP</span></td>
+          <td><span class="time-slot evening">32,000 COP</span></td>
+        </tr>
+        <tr>
+          <td>Sábado</td>
+          <td><span class="time-slot morning">12,000 COP</span></td>
+          <td><span class="time-slot afternoon">22,000 COP</span></td>
+          <td><span class="time-slot evening">32,000 COP</span></td>
+        </tr>
+        <tr>
+          <td>Domingo</td>
+          <td><span class="time-slot morning">12,000 COP</span></td>
+          <td><span class="time-slot afternoon">22,000 COP</span></td>
+          <td><span class="time-slot evening">32,000 COP</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn-reserve" onclick="reserveCourt()">Reservar Cancha</button>
+  </div>
+</div>
+<footer id="footer" class="footer dark-background">
+
+  <div class="container footer-top">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6 footer-about">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <span class="sitename">CanchaMaster</span>
+        </a>
+        <div class="footer-contact pt-3">
+          <p>kr 1 #1A-1 (inventada)</p>
+          <p>Aguachica, Cesar</p>
+          <p class="mt-3"><strong>Phone:</strong> <span>+1 555-CMAster</span></p>
+          <p><strong>Email:</strong> <span>info@example.com</span></p>
+        </div>
+        <div class="social-links d-flex mt-4">
+          <a href=""><i class="bi bi-twitter-x"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="Acercade.html">About us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>nuestros Services</h4>
+        <ul>
+          <li>Asesoría y Soporte al Cliente</li>
+          <li>Espacios para Eventos Sociales</li>
+          <li>Vestidores y Duchas</li>
+          <li>Reserva Online Fácil y Rápida</li>
+          <li>Alquiler de Canchas de Fútbol</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-12 footer-newsletter">
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">CanchaMaster</strong> <span>All Rights Reserved</span></p>
+  </div>
+
+</footer>
+  
+
+  <script>
+    // Función para mostrar el calendario de la cancha seleccionada
+    function showCalendar(courtName) {
+      document.getElementById('calendar-container').style.display = 'block';
+      document.getElementById('court-title').innerText = `Selecciona el horario para la ${courtName}`;
+    }
+
+    // Función para realizar la reserva de la cancha
+    function reserveCourt() {
+      alert("¡Reserva realizada con éxito!");
+    }
+  </script>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
