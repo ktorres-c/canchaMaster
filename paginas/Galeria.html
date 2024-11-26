@@ -52,7 +52,7 @@
           <li><a href="../index.html">Home</a></li>
           <li><a href="Acercade.html">About</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="Galeria.html">Gallery</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li class="dropdown">
@@ -77,57 +77,58 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1>introducción</h1>
-              <p class="mb-0">Bienvenidos a CanchaMaster, tu plataforma en línea para alquilar canchas sintéticas de fútbol de alta calidad. Ya sea para un partido entre amigos, una práctica con tu equipo o un torneo, tenemos la cancha perfecta para ti. Con disponibilidad inmediata, precios accesibles y la comodidad de reservar en línea, disfrutar del fútbol nunca fue tan fácil</p>
+              <h1>Galeria</h1>
+              <p class="mb-0"></p>
             </div>
           </div>
         </div>
       </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="../index.html">Home</a></li>
-          </ol>
-        </div>
-      </nav>
     </div><!-- End Page Title -->
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <div><span>sobre nosotros</span> <span class="description-title"></span></div>
-      </div><!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up">
-          <p>En CanchaMaster, nos apasiona hacer que el fútbol sea accesible para todos.
-            Fundada en 2024 por un grupo de entusiastas del fútbol, CanchaMaster nació con el objetivo de ofrecer canchas de fútbol de calidad a jugadores de todos los niveles, desde aficionados hasta equipos profesionales. Nuestro propósito es proporcionar un espacio donde los amantes del fútbol puedan reunirse, disfrutar de su deporte favorito y, al mismo tiempo, fomentar la actividad física y el trabajo en equipo.
-           </p>
-           <br>
-           <div class="container section-title" data-aos="fade-up">
-           <div><span class="description-title">¿Qué nos hace diferentes?</span></div></div>
-           <p><h3>Canchas de alta calidad: </h3>Disponemos de canchas de césped sintético de última generación, diseñadas para proporcionar el mejor rendimiento y seguridad para los jugadores.</p>
-           <br>
-           <p><h3>Facilidad de reserva:</h3> Gracias a nuestra plataforma de reservas online, puedes alquilar tu cancha en minutos, con opciones flexibles de horarios que se adaptan a tu agenda.</p>
-           <br>
-           <p><h3>Ambiente amigable y profesional:</h3> Nuestro equipo se dedica a ofrecerte la mejor experiencia, desde la atención al cliente hasta la calidad de nuestras instalaciones.</p>
-           <br>
-           <div class="container section-title" data-aos="fade-up">
-            <div><span class="description-title">Mision</span></div>  
-            </div>  <p>Brindar un espacio accesible y de calidad para que todos los fanáticos del fútbol puedan disfrutar del deporte sin complicaciones, creando una comunidad inclusiva y activa.</p>
-            <div class="container section-title" data-aos="fade-up">
-                <div><span class="description-title">vision</span></div>  
-                </div><p>Ser la opción preferida para alquilar canchas de fútbol en el pais, destacándonos por nuestra atención al cliente, la calidad de nuestras instalaciones y nuestro compromiso con el desarrollo del deporte.</p>
-                <div class="container section-title" data-aos="fade-up">
-                    <div><span class="description-title">Valores</span></div>  
-                </div>   <p><h3>Compromiso: </h3> Nos esforzamos por mantener nuestras canchas siempre en perfectas condiciones y proporcionar una experiencia excepcional a nuestros clientes.</p>
-                <br>
-                <p><h3>Pasión:</h3>  Vivimos y respiramos fútbol. Creemos en el poder del deporte para unir a las personas y fomentar la salud y el bienestar.</p>
-                <br>
-                <p><h3>Innovación:</h3>Estamos siempre buscando mejorar y adaptarnos a las nuevas tendencias y tecnologías para ofrecerte el mejor servicio posible.</p>
-                <br>
-        </div>
+        <style>
+            img {
+                width: 200px;
+                height: auto;
+                margin: 10px;
+            }
+            .gallery {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+        </style>
+    <body>
+        <h1>Galería de Imágenes</h1>
+        <div class="gallery" id="gallery"></div>
+    
+        <script>
+            // Ruta de la carpeta de imágenes
+            const imageFolder = 'img/gallery/';
+    
+            // Lista de archivos en la carpeta (esto sería un arreglo estático en este caso)
+            const files = [
+                'gallery-1.jpg'
+            ];
+    
+            // Filtro para obtener solo los archivos de imagen
+            const imageFiles = files.filter(file => 
+                ['.jpg', '.png', '.gif'].includes(file.slice(-4)) || 
+                file.slice(-5) === '.jpeg'
+            );
+    
+            // Obtener el contenedor de la galería
+            const gallery = document.getElementById('gallery');
+    
+            // Mostrar cada imagen en la galería
+            imageFiles.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = imageFolder + image;
+                imgElement.alt = image;
+                gallery.appendChild(imgElement);
+            });
+        </script>
 
     </section><!-- /Starter Section Section -->
 
