@@ -1746,3 +1746,22 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+/* Estilo para las imágenes de la galería */
+.gallery-item img {
+  width: 100%;       
+  height: 200px;      
+  object-fit: cover;   
+}
+
+/* Estilo responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .gallery-item img {
+    height: 150px;    
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item img {
+    height: 120px;     
+  }
+}
