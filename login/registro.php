@@ -104,20 +104,20 @@
       <label for="Contrasena">Contraseña</label>
       <input type="password" id="Contrasena" name="Contrasena" class="form-control" placeholder="Ingresa tu contraseña" required>
     </div>
-    <div class="form-group">
+     <div class="form-group">
       <label for="Rol">Rol</label>
-      <select id="Rol" name="Rol" class="form-control" required>
-        <option value="Administrador">Administrador</option>
+      <select id="Rol" name="Rol" class="form-control" required >
+        <!-- <option value="Administrador">Administrador</option> -->
         <option value="Usuario">Usuario</option>
       </select>
-    </div>
+    </div> 
     <div class="form-group">
       <label for="Estado">Estado</label>
       <select id="Estado" name="Estado" class="form-control" required>
         <option value="Activo">Activo</option>
-        <option value="Inactivo">Inactivo</option>
+        <!-- <option value="Inactivo">Inactivo</option> -->
       </select>
-    </div>
+    </div> 
     <button type="submit" name="Registrar" class="btn-primary">Registrar</button>
   </form>
 </div>
